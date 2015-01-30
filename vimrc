@@ -5,6 +5,10 @@
 "compatibility mode
 set nocompatible              
 
+
+"enable mouse
+set mouse=a
+
 "enable filetypes
 filetype on
 filetype plugin on
