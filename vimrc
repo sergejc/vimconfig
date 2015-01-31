@@ -5,6 +5,8 @@
 "compatibility mode
 set nocompatible              
 
+"modifiable mode
+set modifiable
 
 "enable mouse
 set mouse=a
@@ -19,6 +21,9 @@ syntax on
 
 "write when switching between files.
 set autowrite
+
+"disable bell
+set visualbell
 
 "saves when loses focus
 au FocusLost * :wa
@@ -38,6 +43,9 @@ colorscheme solarized
 
 "set background
 set background=dark
+
+"highline cursorline
+set cursorline
 
 "set color settings in a terminal
 set t_Co=256
@@ -115,6 +123,10 @@ noremap   <Right>  <NOP>
 nnoremap j gj
 nnoremap k gk
 
+" Open split
+nmap vs :vsplit<cr>
+nmap sp :split<cr>
+
 "resize vsplit
 nmap <C-v> :vertical resize +5<cr>
 nmap 25 :vertical resize 40<cr>
@@ -127,8 +139,18 @@ imap <leader><tab> <C-x><C-o>
 "home folder
 nmap <leader>hm :cd ~/ <CR>
 
+"phpunit
+nmap <leader>t :!clear && phpunit<cr>
+nmap <leader>m yiw:!phpunit --filter ^R''<cr>
+
 " Auto-remove trailing spaces
 autocmd BufWritePre *.php :%s/\s\+$//e
+
+"backupdir settings
+set backupdir=/tmp/ 
+set directory=/tmp/
+
+nmap :ed :edit %:p:h/
 
 "php man
 set keywordprg=pman
@@ -145,11 +167,36 @@ Plugin 'gmarik/Vundle.vim'
 "powerline
 Plugin 'Lokaltog/vim-powerline'
 let g:Powerline_symbols = 'fancy'
+set laststatus=2 "Always show statusline
+set encoding=utf-8
+set noshowmode " Hide the default mode text (e.g -- INSERT -- below the statusline)
+
+
+" Abbreviations
+abbrev pft PHPUnit_Framework_TestCase
+abbrev gm !php artisan genarate:model
+abbrev gc !php artisan genarate:contoller
+abbrev gmig !php artisan genarate:migration
+
+" Laravel framework
+nmap <leader>lr :e app/routes.php<cr>
+nmap <leader>lca :e app/config/app.php<cr>81Gf(%0
+nmap <leader>lcd :e app/config/database.php<cr>
+nmap <leader>lc :e composer.json<cr>
+
+" Create/edit file in the current directory
+nmap :ed :edit %:p:h/
+
+"Plugin 'bling/vim-airline'
 
 "nerdtree
 Bundle 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
+let NERDTreeIgnore = ['\.jpg$', '\.png$', '\.gif$']
+
+" Default snippets
+Bundle 'honza/vim-snippets'
 
 "easymotion
 Bundle 'Lokaltog/vim-easymotion'
@@ -163,11 +210,26 @@ Bundle 'FuzzyFinder'
 
 "ctrlp
 Plugin 'kien/ctrlp.vim'
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+"let g:ctrlp_map = '<c-p>'
+nmap <D-p> :CtrlP<cr>
+nmap <C-r> :CtrlPBufTag<cr>
+"let g:ctrlp_cmd = 'CtrlP'
 set wildignore+=*/vendor/**
+let g:ctrlp_custom_ignore = '\v[\/]\.(jpg|png|gif)$'
 
 "emmet
 Plugin 'mattn/emmet-vim'
+
+" tmux vim
+Bundle 'christoomey/vim-tmux-navigator'
+
+" multiple cursors
+" Bundle 'terryma/vim-multiple-cursors'
+
+if has("autocmd")
+    au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Profile0/cursor_shape ibeam"
+    au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Profile0/cursor_shape block"
+    au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Profile0/cursor_shape block"
+endif
 
 call vundle#end()
