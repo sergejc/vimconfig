@@ -1,13 +1,11 @@
 #!/bin/bash
 
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-mkdir ~/.fonts && cd ~/.fonts/ && git clone https://github.com/scotu/ubuntu-mono-powerline.git && cd ~
+git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 
-
-if [[ ! -e ~/.vim/swap ]]; then
-    mkdir ~/.vim/swap 
+if [[ ! -e $HOME/.vim/swap ]]; then
+    mkdir $HOME/.vim/swap 
 fi
 
-if [[ ! -e ~/.vim/backup ]]; then
-    mkdir ~/.vim/backup
+if [[ ! -e $HOME/.vim/backup ]]; then
+    mkdir $HOME/.vim/backup
 fi
