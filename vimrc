@@ -90,7 +90,7 @@ set go-=L
 set mousehide
 
 "map escape key to jj
-inoremap jj <Esc>
+" inoremap jj <Esc>
 
 "map space to colon
 nmap <space> :
@@ -171,6 +171,8 @@ set laststatus=2 "Always show statusline
 set encoding=utf-8
 set noshowmode " Hide the default mode text (e.g -- INSERT -- below the statusline)
 
+" Ctags
+Plugin 'szw/vim-tags'
 
 " Abbreviations
 abbrev pft PHPUnit_Framework_TestCase
