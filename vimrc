@@ -3,7 +3,7 @@
 " sergej.charskij@gmial.com
 
 "compatibility mode
-set nocompatible              
+set nocompatible
 
 "modifiable mode
 set modifiable
@@ -174,6 +174,9 @@ set noshowmode " Hide the default mode text (e.g -- INSERT -- below the statusli
 " Ctags
 Plugin 'szw/vim-tags'
 
+" Trailing white
+Bundle 'bitc/vim-bad-whitespace'
+
 " Abbreviations
 abbrev pft PHPUnit_Framework_TestCase
 abbrev gm !php artisan genarate:model
@@ -196,6 +199,9 @@ Bundle 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.jpg$', '\.png$', '\.gif$']
+
+" Nerd Commenter
+Bundle 'The-NERD-Commenter'
 
 " Default snippets
 Bundle 'honza/vim-snippets'
