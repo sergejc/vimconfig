@@ -192,6 +192,9 @@ Plugin 'szw/vim-tags'
 " Trailing white
 Bundle 'bitc/vim-bad-whitespace'
 
+" Vdebug
+Bundle 'joonty/vdebug.git'
+
 "nerdtree
 Bundle 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
