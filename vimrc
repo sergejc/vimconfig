@@ -155,6 +155,21 @@ nmap :ed :edit %:p:h/
 "php man
 set keywordprg=pman
 
+" Abbreviations
+abbrev pft PHPUnit_Framework_TestCase
+abbrev gm !php artisan genarate:model
+abbrev gc !php artisan genarate:contoller
+abbrev gmig !php artisan genarate:migration
+
+" Laravel framework
+nmap <leader>lr :e app/routes.php<cr>
+nmap <leader>lca :e app/config/app.php<cr>81Gf(%0
+nmap <leader>lcd :e app/config/database.php<cr>
+nmap <leader>lc :e composer.json<cr>
+
+" Create/edit file in the current directory
+nmap :ed :edit %:p:h/
+
 "
 " Plugins
 "
@@ -176,23 +191,6 @@ Plugin 'szw/vim-tags'
 
 " Trailing white
 Bundle 'bitc/vim-bad-whitespace'
-
-" Abbreviations
-abbrev pft PHPUnit_Framework_TestCase
-abbrev gm !php artisan genarate:model
-abbrev gc !php artisan genarate:contoller
-abbrev gmig !php artisan genarate:migration
-
-" Laravel framework
-nmap <leader>lr :e app/routes.php<cr>
-nmap <leader>lca :e app/config/app.php<cr>81Gf(%0
-nmap <leader>lcd :e app/config/database.php<cr>
-nmap <leader>lc :e composer.json<cr>
-
-" Create/edit file in the current directory
-nmap :ed :edit %:p:h/
-
-"Plugin 'bling/vim-airline'
 
 "nerdtree
 Bundle 'scrooloose/nerdtree'
@@ -218,12 +216,13 @@ Bundle 'FuzzyFinder'
 
 "ctrlp
 Plugin 'kien/ctrlp.vim'
-"let g:ctrlp_map = '<c-p>'
 nmap <D-p> :CtrlP<cr>
 nmap <C-r> :CtrlPBufTag<cr>
-"let g:ctrlp_cmd = 'CtrlP'
-set wildignore+=*/vendor/**
-let g:ctrlp_custom_ignore = '\v[\/]\.(jpg|png|gif)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|svn)$',
+  \ 'file': '\v\.(png|jpg|gif|svg|csv|txt)$',
+  \ 'link': '',
+  \ }
 
 "emmet
 Plugin 'mattn/emmet-vim'
