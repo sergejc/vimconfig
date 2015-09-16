@@ -33,7 +33,8 @@ let mapleader = ","
 let g:mapleader = ","
 
 "set timeout.
-set timeoutlen=500
+"set timeoutlen=500
+set timeoutlen=1000 ttimeoutlen=0
 
 "switch between buffers without saving
 set hidden
@@ -216,6 +217,9 @@ Bundle 'L9'
 
 "fuzzyfinder
 Bundle 'FuzzyFinder'
+
+" Ack search
+Plugin 'mileszs/ack.vim'
 
 "ctrlp
 Plugin 'kien/ctrlp.vim'
