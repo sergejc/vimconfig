@@ -33,7 +33,6 @@ let mapleader = ","
 let g:mapleader = ","
 
 "set timeout.
-"set timeoutlen=500
 set timeoutlen=1000 ttimeoutlen=0
 
 "switch between buffers without saving
@@ -50,6 +49,9 @@ set cursorline
 
 "set color settings in a terminal
 set t_Co=256
+
+"delete all
+set backspace=indent,eol,start
 
 "tabs
 set tabstop=4
@@ -120,7 +122,7 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
-"down and up 
+"down and up
 nnoremap j gj
 nnoremap k gk
 
@@ -148,13 +150,13 @@ nmap <leader>m yiw:!phpunit --filter ^R''<cr>
 autocmd BufWritePre *.php :%s/\s\+$//e
 
 "backupdir settings
-set backupdir=/tmp/ 
+set backupdir=/tmp/
 set directory=/tmp/
-
-nmap :ed :edit %:p:h/
 
 "php man
 set keywordprg=pman
+
+let g:ackprg = 'ag --vimgrep'
 
 " Abbreviations
 abbrev pft PHPUnit_Framework_TestCase
@@ -169,7 +171,7 @@ nmap <leader>lcd :e app/config/database.php<cr>
 nmap <leader>lc :e composer.json<cr>
 
 " Create/edit file in the current directory
-nmap :ed :edit %:p:h/
+"nmap :ed :edit %:p:h/
 
 "
 " Plugins
@@ -220,6 +222,9 @@ Bundle 'FuzzyFinder'
 
 " Ack search
 Plugin 'mileszs/ack.vim'
+
+" Ag search
+Bundle 'rking/ag.vim'
 
 "ctrlp
 Plugin 'kien/ctrlp.vim'
