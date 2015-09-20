@@ -170,7 +170,12 @@ nmap <leader>lca :e app/config/app.php<cr>81Gf(%0
 nmap <leader>lcd :e app/config/database.php<cr>
 nmap <leader>lc :e composer.json<cr>
 
-" Create/edit file in the current directory
+" Toggle paster mode
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
+
 "nmap :ed :edit %:p:h/
 
 "
@@ -243,7 +248,13 @@ Plugin 'mattn/emmet-vim'
 Bundle 'christoomey/vim-tmux-navigator'
 
 " multiple cursors
-" Bundle 'terryma/vim-multiple-cursors'
+Bundle 'terryma/vim-multiple-cursors'
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_start_key='<F6>'
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-k>'
+let g:multi_cursor_quit_key='<Esc>'
 
 if has("unix")
   let s:uname = system("uname")
