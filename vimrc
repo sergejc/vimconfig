@@ -176,8 +176,6 @@ set pastetoggle=<F2>
 set showmode
 
 
-"nmap :ed :edit %:p:h/
-
 "
 " Plugins
 "
@@ -222,19 +220,23 @@ map <Leader> <Plug>(easymotion-prefix)
 "l9
 Bundle 'L9'
 
-"fuzzyfinder
-Bundle 'FuzzyFinder'
-
 " Ack search
 Plugin 'mileszs/ack.vim'
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " Ag search
 Bundle 'rking/ag.vim'
+
+" Easytags
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
 
 "ctrlp
 Plugin 'kien/ctrlp.vim'
 nmap <D-p> :CtrlP<cr>
 nmap <C-r> :CtrlPBufTag<cr>
+nnoremap <leader>. :CtrlPTag<cr>
+let g:ctrlp_user_command = 'find %s -type f'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|svn)$',
   \ 'file': '\v\.(png|jpg|gif|svg|csv|txt)$',
@@ -264,9 +266,6 @@ if has("unix")
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
   else
     if has("autocmd")
-        au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Profile0/cursor_shape ibeam"
-        au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Profile0/cursor_shape block"
-        au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Profile0/cursor_shape block"
     endif
   endif
 endif
