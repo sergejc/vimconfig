@@ -19,6 +19,12 @@ filetype indent on
 "enable syntax
 syntax on
 
+"autocomplite
+autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+set completeopt=menu,preview,longest
+inoremap <expr> <down> ((pumvisible())?("\<C-n>"):("\<down>"))
+inoremap <expr> <up> ((pumvisible())?("\<C-p>"):("\<up>"))
+
 "write when switching between files.
 set autowrite
 
@@ -248,8 +254,15 @@ let g:ctrlp_custom_ignore = {
 "emmet
 Plugin 'mattn/emmet-vim'
 
+"supertab
+Plugin 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
 " tmux vim
 Bundle 'christoomey/vim-tmux-navigator'
+
+"php autocomplite
+Bundle 'shawncplus/phpcomplete.vim'
 
 " multiple cursors
 Bundle 'terryma/vim-multiple-cursors'
