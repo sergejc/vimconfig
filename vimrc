@@ -92,9 +92,6 @@ set go-=L
 "hide mouse when typing
 set mousehide
 
-"map escape key to jj
-" inoremap jj <Esc>
-
 "map space to colon
 nmap <space> :
 
@@ -112,6 +109,11 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 
+"tab navigation
+"nnoremap <Tab> :tabn<CR>
+"nnoremap <S-Tab> :tabp<CR>
+"nnoremap <C-F4> :tabclose<CR>
+
 "disable arrow keys
 inoremap  <Up>     <NOP>
 inoremap  <Down>   <NOP>
@@ -126,7 +128,7 @@ noremap   <Right>  <NOP>
 nnoremap j gj
 nnoremap k gk
 
-" Open split
+"open split
 nmap vs :vsplit<cr>
 nmap sp :split<cr>
 
@@ -203,7 +205,7 @@ Bundle 'joonty/vdebug.git'
 
 "nerdtree
 Bundle 'scrooloose/nerdtree'
-map <C-n> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.jpg$', '\.png$', '\.gif$']
 
