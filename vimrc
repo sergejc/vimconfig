@@ -116,9 +116,9 @@ nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 
 "tab navigation
-"nnoremap <Tab> :tabn<CR>
-"nnoremap <S-Tab> :tabp<CR>
-"nnoremap <C-F4> :tabclose<CR>
+nnoremap <Tab> :tabn<CR>
+nnoremap <S-Tab> :tabp<CR>
+nnoremap <C-F4> :tabclose<CR>
 
 "disable arrow keys
 inoremap  <Up>     <NOP>
@@ -201,9 +201,9 @@ set encoding=utf-8
 set noshowmode " Hide the default mode text (e.g -- INSERT -- below the statusline)
 
 " Ctags
-Plugin 'szw/vim-tags'
+"Plugin 'szw/vim-tags'
 
-" Trailing white
+"trailing white
 Bundle 'bitc/vim-bad-whitespace'
 
 " Vdebug
@@ -214,6 +214,11 @@ Bundle 'scrooloose/nerdtree'
 nnoremap <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.jpg$', '\.png$', '\.gif$']
+
+"powerline tabs
+Plugin 'fweep/vim-tabber'
+set tabline=%!tabber#TabLine()
+set guioptions-=e
 
 " Nerd Commenter
 Bundle 'The-NERD-Commenter'
