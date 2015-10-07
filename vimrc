@@ -2,125 +2,125 @@
 " Maintained by: Sergej Charskij
 " sergej.charskij@gmial.com
 
-"compatibility mode
+" Compatibility mode
 set nocompatible
 
-"modifiable mode
+" Modifiable mode
 set modifiable
 
-"enable mouse
+" Enable mouse
 set mouse=a
 
-"enable filetypes
+" Enable filetypes
 filetype on
 filetype plugin on
 filetype indent on
 
-"enable syntax
+" Enable syntax
 syntax on
 
-"autocomplite
+" Autocomplite
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 set completeopt=menu,preview,longest
 inoremap <expr> <down> ((pumvisible())?("\<C-n>"):("\<down>"))
 inoremap <expr> <up> ((pumvisible())?("\<C-p>"):("\<up>"))
 
-"write when switching between files.
+" Write when switching between files.
 set autowrite
 
-"disable bell
+" Disable bell
 set visualbell
 
-"saves when loses focus
+" Saves when loses focus
 au FocusLost * :wa
 
-"set map leader
+" Set map leader
 let mapleader = ","
 let g:mapleader = ","
 
-"set timeout.
+" Set timeout.
 set timeoutlen=1000 ttimeoutlen=0
 
-"switch between buffers without saving
+" Switch between buffers without saving
 set hidden
 
-"set colorscheme
+" Set colorscheme
 colorscheme solarized
 
-"set background
+" Set background
 set background=dark
 
-"highline cursorline
+" Highline cursorline
 set cursorline
 
-"set color settings in a terminal
+" Set color settings in a terminal
 set t_Co=256
 
-"delete all
+" Delete all
 set backspace=indent,eol,start
 
-"tabs
+" Tabs
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
 
-"indents
+" Indents
 set smartindent
 set autoindent
 
-"show lines
+" Show lines
 set number
 set ls=2
 
-"search
+" Search
 set incsearch
 set hlsearch
 set ignorecase
 set smartcase
 
-"remove search results
+" Remove search results
 command! H let @/=""
 
-"encoding
+" Encoding
 set termencoding=utf-8
 set encoding=utf8
 set fileencodings=utf8
 
-"tags
+" Tags
 set tags=./tags;
 
-"gui
+" Gui
 set guioptions-=T
 set guioptions-=r
 set go-=L
 
-"hide mouse when typing
+" Hide mouse when typing
 set mousehide
 
-"map space to colon
+" Map space to colon
 nmap <space> :
 
-"bubble single lines (kicks butt)
+" Bubble single lines (kicks butt)
 nmap <C-Up> ddkP
 nmap <C-Down> ddp
 
-"bubble multiple lines
+" Bubble multiple lines
 vmap <C-Up> xkP`[V`]
 vmap <C-Down> xp`[V`]
 
-"window navigation
+" Window navigation
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 
-"tab navigation
+" Tab navigation
 nnoremap <Tab> :tabn<CR>
 nnoremap <S-Tab> :tabp<CR>
 nnoremap <C-F4> :tabclose<CR>
 
-"disable arrow keys
+" Disable arrow keys
 inoremap  <Up>     <NOP>
 inoremap  <Down>   <NOP>
 inoremap  <Left>   <NOP>
@@ -130,38 +130,38 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
-"down and up
+" Down and up
 nnoremap j gj
 nnoremap k gk
 
-"open split
+" Open split
 nmap vs :vsplit<cr>
 nmap sp :split<cr>
 
-"resize vsplit
+" Resize vsplit
 nmap <C-v> :vertical resize +5<cr>
 nmap 25 :vertical resize 40<cr>
 nmap 50 <c-w>=
 nmap 75 :vertical resize 120<cr>
 
-"map code completion to , + tab
+" Map code completion to , + tab
 imap <leader><tab> <C-x><C-o>
 
-"home folder
+" Home folder
 nmap <leader>hm :cd ~/ <CR>
 
-"phpunit
+" Phpunit
 nmap <leader>t :!clear && phpunit<cr>
 nmap <leader>m yiw:!phpunit --filter ^R''<cr>
 
 " Auto-remove trailing spaces
 autocmd BufWritePre *.php :%s/\s\+$//e
 
-"backupdir settings
+" Backupdir settings
 set backupdir=/tmp/
 set directory=/tmp/
 
-"php man
+" Php man
 set keywordprg=pman
 
 let g:ackprg = 'ag --vimgrep'
@@ -190,32 +190,42 @@ set showmode
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-"vundle
+" Vundle
 Plugin 'gmarik/Vundle.vim'
 
-"powerline
+" Powerline
 Plugin 'Lokaltog/vim-powerline'
 let g:Powerline_symbols = 'fancy'
 set laststatus=2 "Always show statusline
 set encoding=utf-8
 set noshowmode " Hide the default mode text (e.g -- INSERT -- below the statusline)
 
+" Syntax checking
+Plugin 'scrooloose/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 " Ctags
 "Plugin 'szw/vim-tags'
 
-"trailing white
+" Trailing white
 Bundle 'bitc/vim-bad-whitespace'
 
 " Vdebug
 Bundle 'joonty/vdebug.git'
 
-"nerdtree
+" Nerdtree
 Bundle 'scrooloose/nerdtree'
 nnoremap <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.jpg$', '\.png$', '\.gif$']
 
-"powerline tabs
+" Powerline tabs
 Plugin 'fweep/vim-tabber'
 set tabline=%!tabber#TabLine()
 set guioptions-=e
@@ -226,11 +236,11 @@ Bundle 'The-NERD-Commenter'
 " Default snippets
 Bundle 'honza/vim-snippets'
 
-"easymotion
+" Easymotion
 Bundle 'Lokaltog/vim-easymotion'
 map <Leader> <Plug>(easymotion-prefix)
 
-"l9
+" L9
 Bundle 'L9'
 
 " Ack search
@@ -244,32 +254,50 @@ Bundle 'rking/ag.vim'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 
-"ctrlp
+
+" CtrlP
 Plugin 'kien/ctrlp.vim'
 nmap <D-p> :CtrlP<cr>
 nmap <C-r> :CtrlPBufTag<cr>
 nnoremap <leader>. :CtrlPTag<cr>
-let g:ctrlp_user_command = 'find %s -type f'
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore "**/*.pyc"
+      \ -g ""'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|svn)$',
   \ 'file': '\v\.(png|jpg|gif|svg|csv|txt)$',
   \ 'link': '',
   \ }
+"let g:ctrlp_user_command = 'find %s -type f'
 
-"emmet
+" Fast CtrlP matcher
+Plugin 'FelikZ/ctrlp-py-matcher'
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
+" Emmet
 Plugin 'mattn/emmet-vim'
 
-"supertab
+" Supertab
 Plugin 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
-" tmux vim
+" Tmux vim
 Bundle 'christoomey/vim-tmux-navigator'
 
-"php autocomplite
+" Php autocomplite
 Bundle 'shawncplus/phpcomplete.vim'
 
-" multiple cursors
+" Git
+Bundle 'tpope/vim-fugitive'
+if exists("*fugitive#statusline")
+  set statusline=%<\ %f\ %{fugitive#statusline()} ... (other stuff)
+endif
+
+" Multiple cursors
 Bundle 'terryma/vim-multiple-cursors'
 let g:multi_cursor_use_default_mapping=0
 let g:multi_cursor_start_key='<F6>'
