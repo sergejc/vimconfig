@@ -158,8 +158,8 @@ nmap <leader>hm :cd ~/ <CR>
 autocmd BufWritePre *.php :%s/\s\+$//e
 
 " Backupdir settings
-set backupdir=/tmp/
-set directory=/tmp/
+set backupdir=~/.vim/backup/
+set directory=~/.vim/swap/
 
 " Php man
 set keywordprg=pman
@@ -245,13 +245,18 @@ call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
 call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 
+" Nerd Commenter
+Bundle 'The-NERD-Commenter'
+
 " Powerline tabs
 Plugin 'fweep/vim-tabber'
 set tabline=%!tabber#TabLine()
 set guioptions-=e
 
-" Nerd Commenter
-Bundle 'The-NERD-Commenter'
+" Snipmate
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
 
 " Default snippets
 Bundle 'honza/vim-snippets'
@@ -270,9 +275,13 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 " Ag search
 Bundle 'rking/ag.vim'
 
+" Vinegar 
+Plugin 'tpope/vim-vinegar'
+
 " Easytags
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
+let g:easytags_async = 1
 
 
 " CtrlP
@@ -297,6 +306,13 @@ let g:ctrlp_custom_ignore = {
 " Fast CtrlP matcher
 Plugin 'FelikZ/ctrlp-py-matcher'
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
+" Undo
+Plugin 'sjl/gundo.vim'
+set undodir=~/.vim/tmp/undo/
+set undofile
+set history=100
+set undolevels=100
 
 " Emmet
 Plugin 'mattn/emmet-vim'
