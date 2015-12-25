@@ -44,6 +44,11 @@ set timeoutlen=1000 ttimeoutlen=0
 " Switch between buffers without saving
 set hidden
 
+if !has("gui_running")
+    let g:solarized_termtrans=1
+    let g:solarized_termcolors=256
+endif
+
 " Set colorscheme
 colorscheme solarized
 
@@ -54,10 +59,14 @@ set background=dark
 set cursorline
 
 " Set color settings in a terminal
-set t_Co=256
+set term=xterm-256color
 
 " Delete all
 set backspace=indent,eol,start
+
+"highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+"highlight CursorColumn ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
+"highlight CursorLine ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
 
 " Tabs
 set tabstop=4
@@ -194,7 +203,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Powerline
-Plugin 'Lokaltog/vim-powerline'
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 let g:Powerline_symbols = 'fancy'
 set laststatus=2 "Always show statusline
 set encoding=utf-8
@@ -209,6 +218,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <leader>s :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 
 " Ctags
 "Plugin 'szw/vim-tags'
