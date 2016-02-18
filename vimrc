@@ -19,11 +19,20 @@ filetype indent on
 " Enable syntax
 syntax on
 
+" Disable emode
+nnoremap Q <Nop>
+
 " Autocomplite
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
-set completeopt=menu,preview,longest
-inoremap <expr> <down> ((pumvisible())?("\<C-n>"):("\<down>"))
-inoremap <expr> <up> ((pumvisible())?("\<C-p>"):("\<up>"))
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+
+set completeopt=menuone,longest
+inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
+inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
 
 " Write when switching between files.
 set autowrite
@@ -60,10 +69,12 @@ set cursorline
 
 " Set color settings in a terminal
 set term=xterm-256color
+"set t_Co=256
 
 " Delete all
 set backspace=indent,eol,start
 
+" Colors
 "highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 "highlight CursorColumn ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
 "highlight CursorLine ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
@@ -149,12 +160,7 @@ nmap sp :split<cr>
 
 " Resize vsplit
 nmap <C-v> :vertical resize +5<cr>
-nmap 25 :vertical resize 40<cr>
-nmap 50 <c-w>=
-nmap 75 :vertical resize 120<cr>
-
-" Map code completion to , + tab
-imap <leader><tab> <C-x><C-o>
+nmap <C-b> :vertical resize -5<cr>
 
 " Home folder
 nmap <leader>hm :cd ~/ <CR>
@@ -170,28 +176,10 @@ autocmd BufWritePre *.php :%s/\s\+$//e
 set backupdir=~/.vim/backup/
 set directory=~/.vim/swap/
 
-" Php man
-set keywordprg=pman
-
-let g:ackprg = 'ag --vimgrep'
-
-" Abbreviations
-abbrev pft PHPUnit_Framework_TestCase
-abbrev gm !php artisan genarate:model
-abbrev gc !php artisan genarate:contoller
-abbrev gmig !php artisan genarate:migration
-
-" Laravel framework
-nmap <leader>lr :e app/routes.php<cr>
-nmap <leader>lca :e app/config/app.php<cr>81Gf(%0
-nmap <leader>lcd :e app/config/database.php<cr>
-nmap <leader>lc :e composer.json<cr>
-
 " Toggle paster mode
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
-
 
 "
 " Plugins
@@ -201,6 +189,9 @@ call vundle#begin()
 
 " Vundle
 Plugin 'gmarik/Vundle.vim'
+
+" L9
+Bundle 'L9'
 
 " Powerline
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
@@ -222,10 +213,13 @@ let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_
 nnoremap <leader>s :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 
 " Ctags
-"Plugin 'szw/vim-tags'
+Plugin 'szw/vim-tags'
 
 " Trailing white
 Bundle 'bitc/vim-bad-whitespace'
+
+" Parentheses, brackets, quotes, XML tags, and more
+Plugin 'tpope/vim-surround'
 
 " Vdebug
 Bundle 'joonty/vdebug.git'
@@ -272,22 +266,24 @@ Plugin 'garbas/vim-snipmate'
 " Default snippets
 Bundle 'honza/vim-snippets'
 
+let g:snipMate = {}
+let g:snipMate.scope_aliases = {}
+let g:snipMate.scope_aliases['php'] = 'php'
+
+" Supertab
+Plugin 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+
+
+" Php autocomplite
+Bundle 'shawncplus/phpcomplete.vim'
+
 " Easymotion
 Bundle 'Lokaltog/vim-easymotion'
 map <Leader> <Plug>(easymotion-prefix)
 
-" L9
-Bundle 'L9'
-
-" Ack search
-Plugin 'mileszs/ack.vim'
-let g:ackprg = 'ag --nogroup --nocolor --column'
-
 " Ag search
 Bundle 'rking/ag.vim'
-
-" Vinegar 
-Plugin 'tpope/vim-vinegar'
 
 " Easytags
 Plugin 'xolox/vim-misc'
@@ -299,20 +295,30 @@ let g:easytags_async = 1
 Plugin 'kien/ctrlp.vim'
 nmap <D-p> :CtrlP<cr>
 nmap <C-r> :CtrlPBufTag<cr>
-nnoremap <leader>. :CtrlPTag<cr>
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-      \ --ignore .git
-      \ --ignore .svn
-      \ --ignore .hg
-      \ --ignore .DS_Store
-      \ --ignore "**/*.pyc"
-      \ -g ""'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|svn)$',
-  \ 'file': '\v\.(png|jpg|gif|svg|csv|txt)$',
-  \ 'link': '',
-  \ }
-"let g:ctrlp_user_command = 'find %s -type f'
+nnoremap <leader>. :CtrlPTag<cr>'
+
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor\ --hidden
+
+    let g:ctrlp_user_command = 'ag %s -i
+          \ --ignore "*.txt"
+          \ --ignore "*.gif"
+          \ --ignore "*.png"
+          \ --ignore "*.jpg"
+          \ --ignore "*.csv"
+          \ --ignore "*.ico"
+          \ --ignore "*.md"
+          \ -g ""'
+
+    let g:ctrlp_use_caching = 0
+
+else
+    let g:ctrlp_custom_ignore = {
+      \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+      \ 'file': '\v\.(txt)$',
+      \ 'link': 'some_bad_symbolic_links',
+      \ }
+endif
 
 " Fast CtrlP matcher
 Plugin 'FelikZ/ctrlp-py-matcher'
@@ -327,21 +333,6 @@ set undolevels=100
 
 " Emmet
 Plugin 'mattn/emmet-vim'
-
-" Supertab
-Plugin 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" Tmux vim
-Bundle 'christoomey/vim-tmux-navigator'
-let g:tmux_navigator_no_mappings = 1
-nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-
-" Php autocomplite
-Bundle 'shawncplus/phpcomplete.vim'
 
 " Git
 Bundle 'tpope/vim-fugitive'
@@ -371,3 +362,8 @@ if has("unix")
 endif
 
 call vundle#end()
+
+" Last read position
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
