@@ -1,0 +1,166 @@
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Vundle
+Plugin 'gmarik/Vundle.vim'
+
+" L9
+Bundle 'L9'
+
+" Powerline
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+let g:Powerline_symbols = 'fancy'
+set laststatus=2 "Always show statusline
+set encoding=utf-8
+set noshowmode " Hide the default mode text (e.g -- INSERT -- below the statusline)
+
+" Syntax checking
+Plugin 'scrooloose/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <leader>s :SyntasticCheck<CR> :SyntasticToggleMode<CR>
+
+" Ctags
+Plugin 'szw/vim-tags'
+
+" Trailing white
+Bundle 'bitc/vim-bad-whitespace'
+
+" Parentheses, brackets, quotes, XML tags, and more
+Plugin 'tpope/vim-surround'
+
+" Vdebug
+Bundle 'joonty/vdebug.git'
+
+" Nerdtree
+Bundle 'scrooloose/nerdtree'
+nnoremap <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+let NERDTreeIgnore = ['\.jpg$', '\.png$', '\.gif$']
+
+" NERDTress File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+    exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='.  a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+    exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'.  a:extension .'$#'
+endfunction
+
+call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+
+" Nerd Commenter
+Bundle 'The-NERD-Commenter'
+
+" Powerline tabs
+Plugin 'fweep/vim-tabber'
+set tabline=%!tabber#TabLine()
+set guioptions-=e
+
+" Snipmate
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+
+" Default snippets
+Bundle 'honza/vim-snippets'
+
+let g:snipMate = {}
+let g:snipMate.scope_aliases = {}
+let g:snipMate.scope_aliases['php'] = 'php'
+
+" Supertab
+Plugin 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+
+
+" Php autocomplite
+Bundle 'shawncplus/phpcomplete.vim'
+
+" Easymotion
+Bundle 'Lokaltog/vim-easymotion'
+map <Leader> <Plug>(easymotion-prefix)
+
+" Ag search
+Bundle 'rking/ag.vim'
+
+" Easytags
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+let g:easytags_async = 1
+
+
+" CtrlP
+Plugin 'kien/ctrlp.vim'
+nmap <D-p> :CtrlP<cr>
+nmap <C-r> :CtrlPBufTag<cr>
+nnoremap <leader>. :CtrlPTag<cr>'
+
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor\ --hidden
+
+    let g:ctrlp_user_command = 'ag %s -i
+          \ --ignore "*.txt"
+          \ --ignore "*.gif"
+          \ --ignore "*.png"
+          \ --ignore "*.jpg"
+          \ --ignore "*.csv"
+          \ --ignore "*.ico"
+          \ --ignore "*.md"
+          \ -g ""'
+
+    let g:ctrlp_use_caching = 0
+
+else
+    let g:ctrlp_custom_ignore = {
+      \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+      \ 'file': '\v\.(txt)$',
+      \ 'link': 'some_bad_symbolic_links',
+      \ }
+endif
+
+" Fast CtrlP matcher
+Plugin 'FelikZ/ctrlp-py-matcher'
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
+" Undo
+Plugin 'sjl/gundo.vim'
+set undodir=~/.vim/tmp/undo/
+set undofile
+set history=100
+set undolevels=100
+
+" Emmet
+Plugin 'mattn/emmet-vim'
+
+" Git
+Bundle 'tpope/vim-fugitive'
+if exists("*fugitive#statusline")
+  set statusline=%<\ %f\ %{fugitive#statusline()} ... (other stuff)
+endif
+
+" Multiple cursors
+Bundle 'terryma/vim-multiple-cursors'
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_start_key='<F6>'
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-k>'
+let g:multi_cursor_quit_key='<Esc>'
+
+call vundle#end()
