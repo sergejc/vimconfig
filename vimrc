@@ -65,7 +65,7 @@ colorscheme solarized
 set background=dark
 
 " Highline cursorline
-set cursorline
+" set cursorline
 
 " Set color settings in a terminal
 set term=xterm-256color
@@ -181,11 +181,6 @@ nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
 
-"
-" Plugins
-"
-source $HOME/.vim/vimrc_plugins
-
 if has("unix")
   let s:uname = system("uname")
 
@@ -210,3 +205,8 @@ endif
 if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
+"
+" Plugins
+"
+source $HOME/.vim/vimrc_plugins
