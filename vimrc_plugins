@@ -138,6 +138,11 @@ endif
 Plugin 'FelikZ/ctrlp-py-matcher'
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
+" Clojure
+Bundle 'guns/vim-clojure-static'
+Bundle 'tpope/vim-fireplace'
+Bundle 'tpope/vim-classpath'
+
 " Undo
 Plugin 'sjl/gundo.vim'
 set undodir=~/.vim/tmp/undo/
