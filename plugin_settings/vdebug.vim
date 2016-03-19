@@ -13,7 +13,8 @@
 " VdebugBreakpoints)
 " :VdebugEval <code>: evaluate some code and display the result
 " <Leader>e: evaluate the expression under visual highlight and display the result
-Bundle 'joonty/vdebug.git'
+
+Plugin 'joonty/vdebug.git'
 let g:vdebug_keymap = {
 \    "run" : "<Leader>/",
 \    "run_to_cursor" : "<Down>",

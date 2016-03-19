@@ -1,5 +1,5 @@
  " Nerdtree
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 nnoremap <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.jpg$', '\.png$', '\.gif$']

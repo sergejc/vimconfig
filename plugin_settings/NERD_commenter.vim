@@ -1,4 +1,4 @@
-"" Nerd Commenter
+" Nerd Commenter
 " <leader>cc Comment out the current line or text selected in visual mode.
 " <leader>cn Same as <leader>cc but forces nesting.
 " <leader>c<space> Toggles the comment state of the selected line(s). 
@@ -9,4 +9,4 @@
 " <leader>c$ Comments the current line from the cursor to the end of line.
 " <leader>cA Adds comment delimiters to the end of line and goes into insert mode between them.
 
-Bundle 'The-NERD-Commenter'
+Plugin 'The-NERD-Commenter'

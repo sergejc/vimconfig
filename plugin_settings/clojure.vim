@@ -1,4 +1,5 @@
 " Clojure
-Bundle 'guns/vim-clojure-static'
-Bundle 'tpope/vim-fireplace'
-Bundle 'tpope/vim-classpath'
+
+Plugin 'guns/vim-clojure-static'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-classpath'

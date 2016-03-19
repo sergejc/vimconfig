@@ -1,3 +1,4 @@
 " Easymotion
-Bundle 'Lokaltog/vim-easymotion'
+
+Plugin 'Lokaltog/vim-easymotion'
 map <Leader> <Plug>(easymotion-prefix)

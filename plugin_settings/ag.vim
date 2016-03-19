@@ -1,2 +1,3 @@
 " Ag search
-Bundle 'rking/ag.vim'
+
+Plugin 'rking/ag.vim'

@@ -1,2 +1,3 @@
 " L9
-Bundle 'L9'
+
+Plugin 'vim-scripts/L9'

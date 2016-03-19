@@ -1,2 +1,3 @@
 " Php autocomplite
-Bundle 'shawncplus/phpcomplete.vim'
+
+Plugin 'shawncplus/phpcomplete.vim'

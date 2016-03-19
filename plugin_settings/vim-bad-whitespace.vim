@@ -1,2 +1,3 @@
 " Trailing white
-Bundle 'bitc/vim-bad-whitespace'
+
+Plugin 'bitc/vim-bad-whitespace'

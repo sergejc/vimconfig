@@ -1,4 +1,5 @@
 " CtrlP
+
 Plugin 'kien/ctrlp.vim'
 nmap <D-p> :CtrlP<cr>
 nmap <C-r> :CtrlPBufTag<cr>

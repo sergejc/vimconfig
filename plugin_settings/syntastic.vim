@@ -1,5 +1,6 @@
 " Syntax checking
 " On/Off <leader>s
+
 Plugin 'scrooloose/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}

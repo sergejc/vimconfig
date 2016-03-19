@@ -1,4 +1,5 @@
 " Undo
+
 Plugin 'sjl/gundo.vim'
 set undodir=~/.vim/tmp/undo/
 set undofile
