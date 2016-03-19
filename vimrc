@@ -2,11 +2,6 @@
 " Maintained by: Sergej Charskij
 " sergej.charskij@gmial.com
 
-"
-" Plugins
-"
-source $HOME/.vim/vimrc_plugins
-
 " Compatibility mode
 set nocompatible
 
@@ -186,6 +181,37 @@ nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
 
+" Plugins
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Vundle
+Plugin 'gmarik/Vundle.vim'
+source $HOME/.vim/plugin_settings/nerdtree.vim
+source $HOME/.vim/plugin_settings/L9.vim
+source $HOME/.vim/plugin_settings/NERD_commenter.vim
+source $HOME/.vim/plugin_settings/ag.vim
+source $HOME/.vim/plugin_settings/clojure.vim
+source $HOME/.vim/plugin_settings/ctrlp.vim
+source $HOME/.vim/plugin_settings/emmet-vim.vim
+source $HOME/.vim/plugin_settings/gundo.vim
+source $HOME/.vim/plugin_settings/phpcomplete.vim
+source $HOME/.vim/plugin_settings/powerline.vim
+source $HOME/.vim/plugin_settings/supertab.vim
+source $HOME/.vim/plugin_settings/syntastic.vim
+source $HOME/.vim/plugin_settings/vdebug.vim
+source $HOME/.vim/plugin_settings/vim-bad-whitespace.vim
+source $HOME/.vim/plugin_settings/vim-easymotion.vim
+source $HOME/.vim/plugin_settings/vim-easytags.vim
+source $HOME/.vim/plugin_settings/vim-fugitive.vim
+source $HOME/.vim/plugin_settings/vim-multiple-cursors.vim
+source $HOME/.vim/plugin_settings/vim-snipmate.vim
+source $HOME/.vim/plugin_settings/vim-surround.vim
+source $HOME/.vim/plugin_settings/vim-tabber.vim
+source $HOME/.vim/plugin_settings/vim-tag.vim
+
+call vundle#end()
+
 if has("unix")
   let s:uname = system("uname")
 
@@ -210,4 +236,3 @@ endif
 if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
-
