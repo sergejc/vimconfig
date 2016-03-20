@@ -1,5 +1,5 @@
 " Syntax checking
-" On/Off <leader>s
+" toggle mode <leader>s
 
 Plugin 'scrooloose/syntastic'
 set statusline+=%#warningmsg#

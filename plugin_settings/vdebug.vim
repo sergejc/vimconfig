@@ -1,4 +1,4 @@
-" Vdebug
+" DBGp client: a remote debugger interface to the DBGp protocol"
 " <F5>: start/run (to next breakpoint/end of script)
 " <F2>: step over
 " <F3>: step into
@@ -7,14 +7,19 @@
 " <F7>: detach script from debugger
 " <F9>: run to cursor
 " <F10>: toggle line breakpoint
-" <F11>: show context variables (e.g. after "eval")
+" <F11>: show context variables (e.g. after 'eval')
 " <F12>: evaluate variable under cursor
 " :Breakpoint <type> <args>: set a breakpoint of any type (see :help
 " VdebugBreakpoints)
-" :VdebugEval <code>: evaluate some code and display the result
+" :VdebugEval <code>: evaluate some code and display the result "
 " <Leader>e: evaluate the expression under visual highlight and display the result
 
 Plugin 'joonty/vdebug.git'
+
+" set this to 0 to enable the automatic mappings
+" any other value will disable the mappings
+let g:vim_debug_disable_mappings = 1
+
 let g:vdebug_keymap = {
 \    "run" : "<Leader>/",
 \    "run_to_cursor" : "<Down>",
@@ -26,6 +31,7 @@ let g:vdebug_keymap = {
 \    "set_breakpoint" : "<Leader>p",
 \    "eval_visual" : "<Leader>e"
 \}
- let g:vdebug_options = {
- \    "break_on_open" : 0,
- \}
+
+let g:vdebug_options = {
+\    "break_on_open" : 0,
+\}

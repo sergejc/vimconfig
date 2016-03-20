@@ -69,7 +69,6 @@ set background=dark
 
 " Set color settings in a terminal
 set term=xterm-256color
-"set t_Co=256
 
 " Delete all
 set backspace=indent,eol,start
