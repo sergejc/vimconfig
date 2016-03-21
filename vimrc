@@ -195,7 +195,8 @@ source $HOME/.vim/plugin_settings/ctrlp.vim
 source $HOME/.vim/plugin_settings/emmet-vim.vim
 source $HOME/.vim/plugin_settings/gundo.vim
 source $HOME/.vim/plugin_settings/phpcomplete.vim
-source $HOME/.vim/plugin_settings/powerline.vim
+source $HOME/.vim/plugin_settings/vim-airline.vim
+"source $HOME/.vim/plugin_settings/powerline.vim
 source $HOME/.vim/plugin_settings/supertab.vim
 source $HOME/.vim/plugin_settings/syntastic.vim
 source $HOME/.vim/plugin_settings/vdebug.vim
