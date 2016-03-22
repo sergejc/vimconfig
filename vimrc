@@ -62,10 +62,12 @@ endif
 colorscheme solarized
 
 " Set background
-set background=dark
+let profile=$ITERM_PROFILE
 
-" Highline cursorline
-" set cursorline
+set background=dark
+if profile == 'Light'
+    set background=light
+endif
 
 " Set color settings in a terminal
 set term=xterm-256color
@@ -73,10 +75,14 @@ set term=xterm-256color
 " Delete all
 set backspace=indent,eol,start
 
+" Highline cursorline
+"set cursorline
+
 " Colors
 "highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 "highlight CursorColumn ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
 "highlight CursorLine ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
+
 
 " Tabs
 set tabstop=4
