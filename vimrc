@@ -76,7 +76,7 @@ set term=xterm-256color
 set backspace=indent,eol,start
 
 " Highline cursorline
-"set cursorline
+set cursorline
 
 " Colors
 "highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
