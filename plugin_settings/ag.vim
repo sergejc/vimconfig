@@ -14,3 +14,4 @@
 
 Plugin 'rking/ag.vim'
 let g:ag_working_path_mode="r"
+let g:ackprg = 'ag --vimgrep'

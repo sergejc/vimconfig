@@ -15,6 +15,7 @@ Plugin 'kien/ctrlp.vim'
 let g:ctrlp_cmd='CtrlP :pwd'
 nmap <C-p> :CtrlP<cr>
 nmap <C-r> :CtrlPBufTag<cr>
+nmap <C-e> :CtrlPMRU<cr>
 nnoremap <leader>. :CtrlPTag<cr>'
 
 if executable('ag')

@@ -215,6 +215,8 @@ source $HOME/.vim/plugin_settings/vim-snipmate.vim
 source $HOME/.vim/plugin_settings/vim-surround.vim
 source $HOME/.vim/plugin_settings/vim-tabber.vim
 source $HOME/.vim/plugin_settings/vim-tag.vim
+source $HOME/.vim/plugin_settings/vim-vinegar.vim
+source $HOME/.vim/plugin_settings/greplace.vim
 
 call vundle#end()
 
@@ -242,3 +244,13 @@ endif
 if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
+" Notes and Tips
+" zt  scroll the line with the cursor to the top
+" zb  scroll the line with the cursor to the bottom
+" zz  scroll the line with the cursor to the center
+"
+" ma    set mark a at current cursor location
+" 'a    jump to line of mark a (first non-blank character in line)
+" d'a    delete from current line to line of mark a
+" CTRL-O and CTRL-I to jump back and forth between recent points in files
