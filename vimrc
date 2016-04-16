@@ -43,6 +43,9 @@ set visualbell
 " Saves when loses focus
 au FocusLost * :wa
 
+" Save backup
+set backupcopy=yes
+
 " Set map leader
 let mapleader = ","
 let g:mapleader = ","
