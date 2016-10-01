@@ -1,5 +1,7 @@
 " Clojure
 " :Eval (+ 1 1)
+" %Eval all file
+" 1,3Eval run line 1 to line 3
 " :Doc map 'see the documentation'
 " :Source map 'command to show the source for a function'
 " cqq prepopulates the command-line window with the expression under the cursor

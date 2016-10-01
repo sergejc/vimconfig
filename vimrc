@@ -53,6 +53,13 @@ let g:mapleader = ","
 " Set timeout.
 set timeoutlen=1000 ttimeoutlen=0
 
+" Show tab and trailing spaces
+set listchars=tab:▸\ ,eol:¬
+nmap <leader>l :set list!<CR>
+"Invisible character colors
+"highlight NonText guifg=#4a4a59
+"highlight SpecialKey guifg=#4a4a59
+
 " Switch between buffers without saving
 set hidden
 
@@ -79,7 +86,7 @@ set term=xterm-256color
 set backspace=indent,eol,start
 
 " Highline cursorline
-set cursorline
+" set cursorline
 
 " Colors
 "highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
@@ -129,6 +136,9 @@ set mousehide
 " Map space to colon
 nmap <space> :
 
+" Redo
+nmap <leader>r :redo<CR>
+
 " Bubble single lines (kicks butt)
 nmap <C-Up> ddkP
 nmap <C-Down> ddp
@@ -163,12 +173,12 @@ nnoremap j gj
 nnoremap k gk
 
 " Open split
-nmap vs :vsplit<cr>
-nmap sp :split<cr>
+nnoremap <leader>v :split<cr>
+nnoremap <leader>h :vsplit<cr>
 
 " Resize vsplit
-nmap <C-v> :vertical resize +5<cr>
-nmap <C-b> :vertical resize -5<cr>
+nmap <leader>v :vertical resize +5<cr>
+nmap <leader>b :vertical resize -5<cr>
 
 " Home folder
 nmap <leader>hm :cd ~/ <CR>
@@ -205,7 +215,6 @@ source $HOME/.vim/plugin_settings/emmet-vim.vim
 source $HOME/.vim/plugin_settings/gundo.vim
 source $HOME/.vim/plugin_settings/phpcomplete.vim
 source $HOME/.vim/plugin_settings/vim-airline.vim
-"source $HOME/.vim/plugin_settings/powerline.vim
 source $HOME/.vim/plugin_settings/supertab.vim
 source $HOME/.vim/plugin_settings/syntastic.vim
 source $HOME/.vim/plugin_settings/vdebug.vim
@@ -220,12 +229,16 @@ source $HOME/.vim/plugin_settings/vim-tabber.vim
 source $HOME/.vim/plugin_settings/vim-tag.vim
 source $HOME/.vim/plugin_settings/vim-vinegar.vim
 source $HOME/.vim/plugin_settings/greplace.vim
+source $HOME/.vim/plugin_settings/vim-phpfmt.vim
+source $HOME/.vim/plugin_settings/vim-javascript-syntax.vim
+source $HOME/.vim/plugin_settings/python-mode.vim
+
+"source $HOME/.vim/plugin_settings/powerline.vim
 
 call vundle#end()
 
 if has("unix")
   let s:uname = system("uname")
-
   if s:uname == "Darwin\n"
       let &t_SI = "\<Esc>[5 q"
       let &t_EI = "\<Esc>[1 q"
@@ -252,8 +265,39 @@ endif
 " zt  scroll the line with the cursor to the top
 " zb  scroll the line with the cursor to the bottom
 " zz  scroll the line with the cursor to the center
+" z.  scroll the line with the cursor to the center of the screen
 "
 " ma    set mark a at current cursor location
 " 'a    jump to line of mark a (first non-blank character in line)
 " d'a    delete from current line to line of mark a
+"
 " CTRL-O and CTRL-I to jump back and forth between recent points in files
+
+" V* select matching
+" * highlights words
+" shift+* jupm to the next selected
+" v% select matching braces
+"
+" shift+Vu lowercase
+" shift+VU uppercase
+"
+" % jump to next matching pairs
+"
+" wqa save and quit from all open files
+"
+" shift+v* select matching pairs
+"
+" " ctrl+v enter visual block
+" c    change selection (delete and switch to insert mode)
+" I    insert in front of cursor
+" A    append after cursor
+" r    replace every character in selection
+" d    delete selection
+" o    toggle cursor to opposite corner
+"
+" :ls    show the buffer list
+" :bn    open the next buffer in the current window (cycles from the end of
+" the list to the beginning).
+" :bp    open the previous buffer in the current window (cycles from the start
+" of the list to the end).
+" CTRL-^    switch to the alternate file

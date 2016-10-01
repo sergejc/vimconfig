@@ -13,10 +13,17 @@
 
 Plugin 'kien/ctrlp.vim'
 let g:ctrlp_cmd='CtrlP :pwd'
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_max_files = 0
 nmap <C-p> :CtrlP<cr>
 nmap <C-r> :CtrlPBufTag<cr>
 nmap <C-e> :CtrlPMRU<cr>
-nnoremap <leader>. :CtrlPTag<cr>'
+nnoremap <leader>. :CtrlPTag<cr>
+
+" Fast CtrlP matcher
+Plugin 'FelikZ/ctrlp-py-matcher'
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+let g:airline#extensions#tabline#enabled = 1
 
 if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor\ --hidden
@@ -40,7 +47,3 @@ else
       \ 'link': 'some_bad_symbolic_links',
       \ }
 endif
-
-" Fast CtrlP matcher
-Plugin 'FelikZ/ctrlp-py-matcher'
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
