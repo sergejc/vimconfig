@@ -33,6 +33,8 @@ inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
 inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
+" Set color settings in a terminal
+set term=xterm-256color
 
 " Write when switching between files.
 set autowrite
@@ -79,20 +81,17 @@ if profile == 'Light'
     set background=light
 endif
 
-" Set color settings in a terminal
-set term=xterm-256color
-
 " Delete all
 set backspace=indent,eol,start
 
 " Highline cursorline
-" set cursorline
+set cursorline
 
 " Colors
-"highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+"highlight LineNr term=bold cterm=NONE ctermfg=red ctermbg=NONE gui=NONE guifg=yellow guibg=NONE
 "highlight CursorColumn ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
-"highlight CursorLine ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
-
+highlight CursorLine ctermfg=none ctermbg=none cterm=none guifg=none guibg=none gui=none
+highlight CursorLineNr term=bold ctermfg=166 ctermbg=235 cterm=bold
 
 " Tabs
 set tabstop=4
