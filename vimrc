@@ -71,6 +71,11 @@ set hidden
 if !has("gui_running")
     let g:solarized_termtrans=1
     let g:solarized_termcolors=256
+    let g:solarized_bold=1
+    let g:solarized_italic=1
+    let g:solarized_underline=1
+    let g:solarized_contrast="normal"
+    let g:solarized_visibility="low"
 endif
 
 " Set colorscheme
@@ -93,8 +98,9 @@ set cursorline
 " Colors
 "highlight LineNr term=bold cterm=NONE ctermfg=red ctermbg=NONE gui=NONE guifg=yellow guibg=NONE
 "highlight CursorColumn ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
-highlight CursorLine ctermfg=none ctermbg=none cterm=none guifg=none guibg=none gui=none
-highlight CursorLineNr term=bold ctermfg=166 ctermbg=235 cterm=bold
+"highlight CursorLine ctermfg=none ctermbg=none cterm=none guifg=none guibg=none gui=none
+highlight CursorLineNr ctermfg=166 ctermbg=235 cterm=none
+
 
 " Tabs
 set tabstop=4
