@@ -39,6 +39,9 @@ set term=xterm-256color
 " Write when switching between files.
 set autowrite
 
+" Netrw will save no history or bookmarks
+let g:netrw_dirhistmax = 0
+
 " Disable bell
 set visualbell
 

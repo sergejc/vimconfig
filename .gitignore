@@ -1,9 +1,4 @@
-/*
-
-!/colors/
-!.gitignore
-!vimrc
-!install.sh
-!plugin
-!vimrc_plugins
-!plugin_settings
+autoload/
+bundle/
+plugins/
+swap/

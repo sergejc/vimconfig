@@ -15,6 +15,8 @@ Plugin 'kien/ctrlp.vim'
 let g:ctrlp_cmd='CtrlP :pwd'
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_max_files = 0
+let g:ctrlp_max_depth=40
+"let g:ctrlp_working_path_mode = 'c'
 nmap <C-p> :CtrlP<cr>
 nmap <C-r> :CtrlPBufTag<cr>
 nmap <C-e> :CtrlPMRU<cr>
