@@ -37,7 +37,7 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 set term=xterm-256color
 
 " Write when switching between files.
-set autowrite
+au FocusLost * :wa
 
 " Netrw will save no history or bookmarks
 let g:netrw_dirhistmax = 0
@@ -98,7 +98,7 @@ set cursorline
 " Colors
 "highlight LineNr term=bold cterm=NONE ctermfg=red ctermbg=NONE gui=NONE guifg=yellow guibg=NONE
 "highlight CursorColumn ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
-"highlight CursorLine ctermfg=none ctermbg=none cterm=none guifg=none guibg=none gui=none
+highlight CursorLine ctermbg=none cterm=none gui=none
 highlight CursorLineNr ctermfg=166 ctermbg=235 cterm=none
 
 
@@ -225,7 +225,6 @@ source $HOME/.vim/plugin_settings/phpcomplete.vim
 source $HOME/.vim/plugin_settings/vim-airline.vim
 source $HOME/.vim/plugin_settings/supertab.vim
 source $HOME/.vim/plugin_settings/syntastic.vim
-source $HOME/.vim/plugin_settings/vdebug.vim
 source $HOME/.vim/plugin_settings/vim-bad-whitespace.vim
 source $HOME/.vim/plugin_settings/vim-easymotion.vim
 source $HOME/.vim/plugin_settings/vim-easytags.vim
@@ -237,10 +236,11 @@ source $HOME/.vim/plugin_settings/vim-tabber.vim
 source $HOME/.vim/plugin_settings/vim-tag.vim
 source $HOME/.vim/plugin_settings/vim-vinegar.vim
 source $HOME/.vim/plugin_settings/greplace.vim
-source $HOME/.vim/plugin_settings/vim-phpfmt.vim
 source $HOME/.vim/plugin_settings/vim-javascript-syntax.vim
 source $HOME/.vim/plugin_settings/python-mode.vim
 
+"source $HOME/.vim/plugin_settings/vim-phpfmt.vim
+"source $HOME/.vim/plugin_settings/vdebug.vim
 "source $HOME/.vim/plugin_settings/powerline.vim
 
 call vundle#end()
