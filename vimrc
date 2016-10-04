@@ -113,8 +113,12 @@ set smartindent
 set autoindent
 
 " Show lines
-set number
+set relativenumber
 set ls=2
+
+" Relative line numbers
+au FocusLost * :set number
+au FocusGained * :set relativenumber
 
 " Search
 set incsearch
@@ -268,6 +272,14 @@ endif
 if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
 
 " Notes and Tips
 " zt  scroll the line with the cursor to the top
