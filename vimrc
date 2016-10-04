@@ -117,8 +117,8 @@ set relativenumber
 set ls=2
 
 " Relative line numbers
-au FocusLost * :set number
-au FocusGained * :set relativenumber
+"autocmd InsertEnter * :set number
+"autocmd InsertLeave * :set relativenumber
 
 " Search
 set incsearch
@@ -280,6 +280,8 @@ function! NumberToggle()
     set relativenumber
   endif
 endfunc
+
+nnoremap <leader>n :call NumberToggle()<cr>
 
 " Notes and Tips
 " zt  scroll the line with the cursor to the top

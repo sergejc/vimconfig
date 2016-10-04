@@ -16,13 +16,19 @@ map <Leader> <Plug>(easymotion-prefix)
 
 " word motion
 map <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 " lines motion
 map <leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
 
 " search
 nmap <leader>s <Plug>(easymotion-bd-f2)
+nmap s <Plug>(easymotion-overwin-f2)
+
 nmap <leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
 
 " line motions
 map <Leader>l <Plug>(easymotion-lineforward)
