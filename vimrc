@@ -114,6 +114,7 @@ set autoindent
 
 " Show lines
 set relativenumber
+set number
 set ls=2
 
 " Relative line numbers
