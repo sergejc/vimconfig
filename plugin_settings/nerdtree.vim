@@ -11,6 +11,7 @@ Plugin 'scrooloose/nerdtree'
 nnoremap <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.jpg$', '\.png$', '\.gif$']
+let g:NERDTreeBookmarksFile = $HOME .'/.vim/bundle/nerdtree/bookmarks'
 
 " NERDTress File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
