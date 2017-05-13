@@ -10,6 +10,7 @@
 " K is mapped to look up the symbol under the cursor with doc
 " [d is mapped to look up the symbol under the cursor with source
 " gf, everybody's favorite 'go to file' command, works on namespaces
+" cpr and :Require! - (require :reload) or (require :reload-all) the current namespace.
 
 Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-fireplace'
