@@ -186,8 +186,8 @@ nnoremap j gj
 nnoremap k gk
 
 " Open split
-nnoremap <leader>v :split<cr>
-nnoremap <leader>h :vsplit<cr>
+nnoremap <leader>vs :vsplit<cr>
+noremap <leader>hs :split<cr>
 
 " Resize vsplit
 nmap <leader>v :vertical resize +5<cr>
@@ -201,7 +201,7 @@ nmap <leader>hm :cd ~/ <CR>
 "nmap <leader>m yiw:!phpunit --filter ^R''<cr>
 
 " Auto-remove trailing spaces
-autocmd BufWritePre *.php :%s/\s\+$//e
+autocmd BufWritePre * :%s/\s\+$//e
 
 " Backupdir settings
 set backupdir=~/.vim/backup/
@@ -218,6 +218,7 @@ call vundle#begin()
 
 " Vundle
 Plugin 'gmarik/Vundle.vim'
+
 source $HOME/.vim/plugin_settings/nerdtree.vim
 source $HOME/.vim/plugin_settings/L9.vim
 source $HOME/.vim/plugin_settings/NERD_commenter.vim
@@ -226,7 +227,6 @@ source $HOME/.vim/plugin_settings/clojure.vim
 source $HOME/.vim/plugin_settings/ctrlp.vim
 source $HOME/.vim/plugin_settings/emmet-vim.vim
 source $HOME/.vim/plugin_settings/gundo.vim
-source $HOME/.vim/plugin_settings/phpcomplete.vim
 source $HOME/.vim/plugin_settings/vim-airline.vim
 source $HOME/.vim/plugin_settings/supertab.vim
 source $HOME/.vim/plugin_settings/syntastic.vim
@@ -235,18 +235,26 @@ source $HOME/.vim/plugin_settings/vim-easymotion.vim
 source $HOME/.vim/plugin_settings/vim-easytags.vim
 source $HOME/.vim/plugin_settings/vim-fugitive.vim
 source $HOME/.vim/plugin_settings/vim-multiple-cursors.vim
-source $HOME/.vim/plugin_settings/vim-snipmate.vim
 source $HOME/.vim/plugin_settings/vim-surround.vim
 source $HOME/.vim/plugin_settings/vim-tabber.vim
 source $HOME/.vim/plugin_settings/vim-tag.vim
 source $HOME/.vim/plugin_settings/vim-vinegar.vim
 source $HOME/.vim/plugin_settings/greplace.vim
-source $HOME/.vim/plugin_settings/vim-javascript-syntax.vim
-source $HOME/.vim/plugin_settings/python-mode.vim
+source $HOME/.vim/plugin_settings/youcompleteme.vim
+
+"source $HOME/.vim/plugin_settings/ultisnips.vim
+"source $HOME/.vim/plugin_settings/vmustache.vim
+"source $HOME/.vim/plugin_settings/php-documentor.vim
 
 "source $HOME/.vim/plugin_settings/vim-phpfmt.vim
 "source $HOME/.vim/plugin_settings/vdebug.vim
 "source $HOME/.vim/plugin_settings/powerline.vim
+"source $HOME/.vim/plugin_settings/phpcomplete.vim
+"source $HOME/.vim/plugin_settings/vim-snipmate.vim
+"source $HOME/.vim/plugin_settings/vim-javascript-syntax.vim
+"source $HOME/.vim/plugin_settings/python-mode.vim
+"source $HOME/.vim/plugin_settings/php.vim
+"source $HOME/.vim/plugin_settings/vim-php-namespace.vim
 
 call vundle#end()
 
@@ -293,6 +301,7 @@ nnoremap <leader>n :call NumberToggle()<cr>
 " ma    set mark a at current cursor location
 " 'a    jump to line of mark a (first non-blank character in line)
 " d'a    delete from current line to line of mark a
+" :marks    list all the current marks
 "
 " CTRL-O and CTRL-I to jump back and forth between recent points in files
 
