@@ -3,7 +3,7 @@
 " installation
 " cd ~/.vim/bundle/YouCompleteMe
 " ./install.py --clang-completer --tern-completer --gocode-completer
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 
 " Provides Tern-based JavaScript editing support.
 " TernDef: Jump to the definition of the thing under the cursor.
