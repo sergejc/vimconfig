@@ -1,4 +1,5 @@
 " Clojure
+" To run nREPL run :Connect and enter the host and port
 " :Eval (+ 1 1)
 " %Eval all file
 " 1,3Eval run line 1 to line 3
